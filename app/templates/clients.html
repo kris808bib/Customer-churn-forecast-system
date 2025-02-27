@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список клиентов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .menu {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .menu a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .content {
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/">Главная</a>
+        <a href="/clients">Список клиентов</a>
+        <a href="/general_recommendations">Общие рекомендации</a>
+    </div>
+    <div class="content">
+        <h1>Список клиентов по степени риска</h1>
+        <table border="1">
+            <tr>
+                <th>ID клиента</th>
+                <th>Вероятность оттока</th>
+                <th>Категория риска</th>
+                <th>Рекомендации</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.client_id }}</td>
+                <td>{{ result.churn_probability }}</td>
+                <td>{{ result.risk_category }}</td>
+                <td>{{ result.recommendations }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

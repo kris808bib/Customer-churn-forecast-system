@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .menu {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .menu a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .content {
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/">Главная</a>
+        <a href="/clients">Список клиентов</a>
+        <a href="/general_recommendations">Общие рекомендации</a>
+    </div>
+    <div class="content">
+        <h1>Добро пожаловать!</h1>
+        <input type="id" id="id" name="client_id">
+        <button type="submit">Узнать риск</button>
+        <p>Используйте меню для навигации по приложению.</p>
+        <p>Вы можете:</p>
+        <ul>
+            <li>Получить рекомендации для конкретного клиента, перейдя по ссылке <a href="/client/0">/client/{client_id}</a>.</li>
+            <li>Просмотреть список всех клиентов, отсортированных по степени риска, на странице <a href="/clients">/clients</a>.</li>
+            <li>Просмотреть общие рекомендации для всех клиентов на странице <a href="/general_recommendations">/general_recommendations</a>.</li>
+        </ul>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .menu {
+            background-color: #333;
+            overflow: hidden;
+        }
+        .menu a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background-color: #575757;
+        }
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+        }
+        .client-input-container {
+            margin: 20px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        .client-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .client-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .client-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/">Главная</a>
+        <a href="/clients">Список клиентов</a>
+        <a href="/general_recommendations">Общие рекомендации</a>
+    </div>
+    <div class="content">
+        <h1>Добро пожаловать!</h1>
+        <div class="client-input-container">
+            <h3>Перейти к клиенту по ID:</h3>
+            <div class="input-group">
+                <input 
+                    type="number" 
+                    class="client-input" 
+                    id="clientId" 
+                    placeholder="Введите ID клиента"
+                    min="0"
+                    required
+                >
+                <button class="client-button" onclick="redirectToClient()">Перейти</button>
+            </div>
+        </div>
+
+        <p>Используйте меню для навигации по приложению.</p>
+        <p>Вы можете:</p>
+        <ul>
+            <li>Получить рекомендации для конкретного клиента, перейдя по ссылке <a href="/client/0">/client/{client_id}</a></li>
+            <li>Просмотреть список всех клиентов, отсортированных по степени риска, на странице <a href="/clients">/clients</a></li>
+            <li>Просмотреть общие рекомендации для всех клиентов на странице <a href="/general_recommendations">/general_recommendations</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function redirectToClient() {
+            const clientId = document.getElementById('clientId').value;
+            if (clientId) {
+                window.location.href = `/client/${clientId}`;
+            }
+        }
+
+        // Обработка нажатия Enter
+        document.getElementById('clientId').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                redirectToClient();
+            }
+        });
+    </script>
+</body>
+</html>
